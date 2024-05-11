@@ -63,9 +63,14 @@ society related media etc.
 Any user can send email to the chairman of the department. The user will fill the form and send the email to the chairman.
 user can only send email if he/she is logged in as `student` .
 
-# Instruction for contributing to this project
+It seems like you're providing instructions for contributors to your project. Here's a revised version for clarity and readability:
 
-anyone can contribute to this project by following the following steps:
+---
+
+## Instructions for Contributing to This Project
+
+If you have any ideas or features you'd like to collaborate on for this project, feel free to reach out! Anyone is welcome to contribute. You can email me at `22pwbcs0916@uetpeshawar.edu.pk` to get started. Let's build something great together!
+
 
 ## APIS Endpoints Related to User Management
 
