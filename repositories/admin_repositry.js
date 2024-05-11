@@ -49,7 +49,7 @@ class AdminRepository {
 
     async updateAdmin({ Username, Email, Password, AdminID }) {
     try {
-      Password = hashPassword(Password);
+      Password = await hashPassword(Password);
       const admin = await Admin.update({
         Username,
         Email,

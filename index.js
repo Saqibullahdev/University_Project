@@ -6,13 +6,13 @@ const cookieParser=require('cookie-parser');
 app.use(express.json());
 app.use(cookieParser());
 console.log(2)
-const isVerifyUser=require('./middleware/isVerifyUser')
+const isAdmin=require('./middleware/isAdmin')
 
 
 app.use('/api/v1',V1Router);
 const PORT=process.env.PORT||3000;
-app.get('/',isVerifyUser,(req,res)=>{
-    res.send('hello world api');
+app.get('/',(req,res)=>{
+   res.json({message:"Welcome to our application"})
 })
 
 
