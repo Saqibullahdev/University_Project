@@ -20,6 +20,7 @@ const isVerifyUser = (req, res, next) => {
         }
 
         // If everything is valid, move to the next middleware
+            req.user=decoded;
          next();
     } catch (error) {
         return res.status(401).json({ message: 'Unauthorized' });
