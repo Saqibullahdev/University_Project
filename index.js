@@ -12,7 +12,7 @@ const isVerifyUser=require('./middleware/isVerifyUser')
 app.use('/api/v1',V1Router);
 const PORT=process.env.PORT||3000;
 app.get('/',isVerifyUser,(req,res)=>{
-    res.send('hello world')
+    res.send('hello world');
 })
 
 
