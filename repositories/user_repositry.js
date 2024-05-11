@@ -6,13 +6,14 @@ const bcrypt = require("bcrypt");
 class UserRepositry {
   async createUser({ Username, Email, Password }) {
     try {
-      const hashedPassword = await hashPassword(Password);
-      Password = hashedPassword;
+      const hasdpswd = await hashPassword(Password);
+      console.log(hasdpswd);
       const newUser = await User.create({
         Username,
         Email,
-        Password: hashedPassword,
+        Password: hasdpswd,
       });
+      console.log(hasdpswd);
       newUser.save();
       return newUser;
     } catch (error) {
@@ -35,7 +36,7 @@ class UserRepositry {
         throw new Error("Incorrect password");
       }
       const token = generateToken({
-        id: existingUser.UserID,
+        UserID: existingUser.UserID,
         email: existingUser.Email,
         Role: "User",
       });

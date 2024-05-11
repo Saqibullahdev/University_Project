@@ -86,7 +86,7 @@ Data Pass in Request body:
     {
     "Username":"SaqibUllah",
     "Email":"saqibUllah@sample.com",
-    "Passowrd":"1234"
+    "Password":"1234"
     }
 
 ```
@@ -166,4 +166,27 @@ Data Pass in Request body:
       }
 
 ```
+
+**4- Send Email to Chairman**
+
+```http
+  POST localhost:8080/api/v1/email/send
+```
+
+Data Pass in Request body:
+```json
+
+    {
+    "RecipientEmail":"1123@gmail.com",
+    "Subject":"Test Email",
+    "Body":"This is a test email"
+
+    }
+```
+
+- `SenderID` will be automatically set to the user who is logged in and sending the email.
+
+- it will be fetch from request cookie `user_token` .
+
+**Note:** Only `student` can send email to the chairman of the department who is `logged in`.
 
