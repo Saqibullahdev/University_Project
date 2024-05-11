@@ -63,6 +63,7 @@ const updateAdmin=async(req,res)=>{
         return res.status(StatusCodes.OK).json({
             message: ReasonPhrases.OK,
             data: admin,
+            succuss: true,
         });
     
     } catch (error) {
