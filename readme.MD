@@ -154,6 +154,7 @@ Data Pass in Request body:
 ```json
   
       {
+        "AdminID":1,
       "Username":"SaqibUllah",
       "Email":"",
       "Password":"1234"

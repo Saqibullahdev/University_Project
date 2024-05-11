@@ -1,16 +1,17 @@
 const { generateToken } = require("../helpers/jwtToken");
 const { Admin } = require("../models/index");
 const { hashPassword } = require("../helpers/hashpassword");
-const bycrypt = require("bcryptjs");
+const bycrypt = require("bcrypt");
 
 class AdminRepository {
   async createAdmin({ Username, Email, Password }) {
     try {
-      Password = hashPassword(Password);
+      let hashpswd = await hashPassword(Password);
+      console.log(hashpswd);
       const admin = await Admin.create({
         Username,
         Email,
-        Password,
+        Password: hashpswd,
       });
 
       if (!admin) return false;

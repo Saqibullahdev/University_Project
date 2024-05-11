@@ -1,5 +1,5 @@
 const {ReasonPhrases,StatusCodes}=require('http-status-codes')
-const adminRepository = require("../repositories/admin_repository");
+const adminRepository = require("../repositories/admin_repositry");
 
 
 const createAdmin=async(req,res)=>{
@@ -13,7 +13,8 @@ const createAdmin=async(req,res)=>{
 
         return res.status(StatusCodes.CREATED).json({
             message: ReasonPhrases.CREATED,
-            data: admin,
+            Username: admin.Username,
+            Email: admin.Email,
         });
     
    } catch (error) {
@@ -35,9 +36,9 @@ const LoginAdmin=async(req,res)=>{
             });
         }
 
-        return res.status(StatusCodes.OK).json({
+        return res.cookie("admin_token", token).status(StatusCodes.OK).json({
             message: ReasonPhrases.OK,
-            data: token,
+            succuss: true,
         });
     
     } catch (error) {
@@ -48,3 +49,34 @@ const LoginAdmin=async(req,res)=>{
     
     }
 }
+
+const updateAdmin=async(req,res)=>{
+    try {
+        const admin = await adminRepository.updateAdmin(req.body);
+        if (!admin) {
+            return res.status(StatusCodes.BAD_REQUEST).json({
+                message: ReasonPhrases.BAD_REQUEST,
+                
+            });
+        }
+
+        return res.status(StatusCodes.OK).json({
+            message: ReasonPhrases.OK,
+            data: admin,
+        });
+    
+    } catch (error) {
+        console.log(error);
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            message: ReasonPhrases.INTERNAL_SERVER_ERROR,
+        });
+    
+    }
+}
+
+
+module.exports = {
+    createAdmin,
+    LoginAdmin,
+    updateAdmin,
+};
