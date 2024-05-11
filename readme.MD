@@ -190,3 +190,45 @@ Data Pass in Request body:
 
 **Note:** Only `student` can send email to the chairman of the department who is `logged in`.
 
+
+## APIS Endpoints Related to Adding Notification
+
+
+**1- Adding Notification**
+  
+  ```http
+    POST localhost:8080/api/v1/notification/add
+  ```
+
+Data Pass in Request body:
+```json
+  
+      {
+      "title":"Test Notification",
+      "Message":"This is a test notification",
+      "ImageURL":"", //automatic will set 
+      "AdminID":1   //automatic will set 
+      }
+
+```
+`ImageURL` and `AdminID` will be automatically set to the admin who is logged in and posting the notification you do not need to pass `explicitly`.
+
+**2 Get All Notifications**
+
+```http
+  GET localhost:8080/api/v1/notification/get
+```
+
+In reposne you will get all the notifications posted by the admin of the department.
+
+
+**3 Delete Notification**
+
+```http
+  DELETE localhost:8080/api/v1/notification/delete/NotificationID
+```
+
+For deleting the notification you need to pass the `NotificationID` in the URL.
+
+`Example`: `localhost:8080/api/v1/notification/delete/1`
+
