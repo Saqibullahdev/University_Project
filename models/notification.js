@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        Image:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
         Date: {
             type: DataTypes.DATE,
             allowNull: false,
@@ -21,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         Status: {
             type: DataTypes.ENUM('Read', 'Unread'),
-            allowNull: false,
+            allowNull: true,
             defaultValue: 'Unread'
         }
         // Add more attributes as needed
