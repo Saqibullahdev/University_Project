@@ -105,3 +105,59 @@ Data Pass in Request body:
 When you login in response a cookie will be set in your browser with the name `user_token` which will be used for authentication in further requests.
 base on that token you can access user `dashboard` and send email to `chairman` of the department.
 
+
+## APIS Endpoints Related to Admin Management
+
+**1- Register Admin**
+
+```http
+  POST localhost:8080/api/v1/admin/create
+```
+
+Data Pass in Request body:
+```json
+  
+      {
+      "Username":"SaqibUllah",
+      "Email":"abc@gmail.com",
+      "Password":"1234"
+      }
+
+```
+
+**2- Login Admin**
+
+```http
+  POST localhost:8080/api/v1/admin/login
+```
+
+Data Pass in Request body:
+```json
+  
+      {
+      "Username":"SaqibUllah",
+      "Password":"1234"
+      }
+  
+  ```
+  
+  When you login in response a cookie will be set in your browser with the name `admin_token` which will be used for authentication in further requests.
+base on that token you can access admin `dashboard` and post `notification` and `gallery` of the department.
+
+**3- Update Admin**
+  
+  ```http
+    PUT localhost:8080/api/v1/admin/update
+  ```
+
+Data Pass in Request body:
+```json
+  
+      {
+      "Username":"SaqibUllah",
+      "Email":"",
+      "Password":"1234"
+      }
+
+```
+
