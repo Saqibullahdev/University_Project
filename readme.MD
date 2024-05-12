@@ -102,7 +102,7 @@ Data Pass in Request body:
 
     {
     "Username":"SaqibUllah",
-    "Passowrd":"1234"
+    "Password":"1234"
     }
 
 ```
