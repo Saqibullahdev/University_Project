@@ -90,6 +90,7 @@ class NotificationRepositry{
 const notificationRepositry=new NotificationRepositry;
 
 module.exports={
-    notificationRepositry
+    notificationRepositry,
+    
 
 }

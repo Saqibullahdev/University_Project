@@ -35,7 +35,7 @@ app.post("/upload", (req, res) => {
 sequelize
   .authenticate()
   .then(() => {
-    return sequelize.sync({ force: true ,alter:true});
+    return sequelize.sync({ force: false ,alter:false});
   })
   .then(() => {
     app.listen(PORT, () => {
