@@ -1,6 +1,8 @@
+const { Gallery } = require(".");
+
 module.exports = (sequelize, DataTypes) => {
     const Gallery = sequelize.define('Gallery', {
-        ImageID: {
+        GalleryID: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true

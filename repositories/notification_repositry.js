@@ -4,6 +4,7 @@ class NotificationRepositry{
 
     async AddNotification({title,Message,file,admin}){
         const AdminID=admin.id
+        
 
         try {
             const fileUpload= await uploadFileToCloudinary(file,30)
@@ -12,9 +13,9 @@ class NotificationRepositry{
                 title,
                 Message,
                 AdminID,
-                // ImageURL:fileUpload.secure_url
+                ImageURL:fileUpload.secure_url
             })
-
+            notification.save()
             if(!notification) return false
 
             return notification

@@ -6,17 +6,19 @@ const {ReasonPhrases,StatusCodes}=require('http-status-codes')
 
 const AddNotification= async (req,res)=>{
     const {title,Message}=req.body
+    if(!req.files) return res.status(StatusCodes.BAD_REQUEST).json({message:'Please Upload a file',success:false})
     const file = req.files.file;
+    if(!title || !Message) return res.status(StatusCodes.BAD_REQUEST).json({message:'Please Enter Title and Message',success:false})
 
 
     const admin=req.admin
     console.log(file)
     try {
         const newNotif= await notificationRepositry.AddNotification({title,Message,file,admin})
-        if (!newNotif) return res.status(StatusCodes.BAD_REQUEST).json({message:'error while Uploading Notification'})
+        if (!newNotif) return res.status(StatusCodes.BAD_REQUEST).json({message:'error while Uploading Notification', succuss:false})
         return res.status(StatusCodes.CREATED).
         json({
-            succuss:true,
+            success:true,
             newNotif
         })
         
@@ -48,6 +50,7 @@ const GetNotification=async (req,res)=>{
 }
 
 const deleteNotification=async (req,res)=>{
+    if(!req.params) return res.status(StatusCodes.BAD_REQUEST).json({message:'Please Enter NotificationID',success:false})
     const {NotificationID}=req.params
     try {
         const notification=await notificationRepositry.deleteNotification(NotificationID)

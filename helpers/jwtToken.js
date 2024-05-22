@@ -3,7 +3,7 @@ require('dotenv').config();
 
 function generateToken(payload) {
     try {
-        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '2h' });
         return token;
     } catch (error) {
         console.error('Error generating JWT token:', error);

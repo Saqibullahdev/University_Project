@@ -73,11 +73,28 @@ const updateAdmin=async(req,res)=>{
         });
     
     }
+    
 }
 
+const isAdminLoggin=async(req,res)=>{
+    let admin=req.admin;
+    return res.status(StatusCodes.OK).json({
+        message: ReasonPhrases.OK,
+        succuss: true,
+        data: admin,
+    });
+}
+
+const LogoutAdmin=async(req,res)=>{
+    return res.clearCookie("admin_token").status(StatusCodes.OK).json({
+        message: ReasonPhrases.OK,
+        succuss: true,
+    });}
 
 module.exports = {
     createAdmin,
     LoginAdmin,
     updateAdmin,
+    LogoutAdmin,
+    isAdminLoggin
 };
