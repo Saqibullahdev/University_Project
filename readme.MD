@@ -232,3 +232,47 @@ For deleting the notification you need to pass the `NotificationID` in the URL.
 
 `Example`: `localhost:8080/api/v1/notification/delete/1`
 
+
+## APIS Endpoints Related to Adding Gallery
+
+
+**1- Adding Gallery**
+  
+  ```http
+    POST localhost:8080/api/v1/gallery/add
+  ```
+
+Data Pass in Request body:
+```json
+  
+      {
+      "Caption":"Test Gallery",
+      "Description":"", 
+      "ImageURL":"", //automatic will set
+      "AdminID":1   //automatic will set 
+      }
+
+```
+
+`ImageURL` and `AdminID` will be automatically set to the admin who is logged in and posting the gallery you do not need to pass `explicitly`.
+
+**2 Get All Gallery**
+
+```http
+  GET localhost:8080/api/v1/gallery/get
+```
+
+In reposne you will get all the gallery posted by the admin of the department.
+
+**3 Delete Gallery**
+
+```http
+  DELETE localhost:8080/api/v1/gallery/delete/GalleryID
+```
+
+For deleting the gallery you need to pass the `GalleryID` in the URL.
+you also need to be loggin as `Admin`
+
+`Example`: `localhost:8080/api/v1/gallery/delete/1`
+
+

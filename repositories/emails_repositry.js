@@ -2,7 +2,7 @@ const {sendEmail}=require('../utils/sendEmail')
 const {Email}=require('../models/index')
 class EmailsRepository {
  
-    async addEmail({ RecipientEmail,Subject,Body ,UserID}) {
+    async addEmail({ RecipientEmail='saqibregi43@gmail.com',Subject,Body ,UserID}) {
         try {
             // Send email
             const isSendEmail= await sendEmail(RecipientEmail, Subject, Body);

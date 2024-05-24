@@ -1,9 +1,18 @@
-const dbConfig = require('../config/dbconfig.json');
+require('dotenv').config();
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.password, {
-    host: dbConfig.host,
+console.log(process.env.DB_NAME);
+console.log(process.env.DB_USER);
+console.log(process.env.DB_PASS);
+console.log(process.env.DB_HOST);
+console.log(process.env.DB_PORT);
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+    host: process.env.DB_HOST,
     dialect: 'mysql',
+    port:process.env.DB_PORT,
+    ssl:true,
+    logging: true
+    
 });
 
 const AdminModel = require('./admin');

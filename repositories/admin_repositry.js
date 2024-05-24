@@ -23,11 +23,11 @@ class AdminRepository {
     }
   }
 
-  async LoginAdmin({ Username, Password }) {
+  async LoginAdmin({ Email, Password }) {
     try {
       const admin = await Admin.findOne({
         where: {
-          Username,
+          Email,
         },
       });
 

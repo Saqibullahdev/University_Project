@@ -6,14 +6,16 @@ const bcrypt = require("bcrypt");
 class UserRepositry {
   async createUser({ Username, Email, Password }) {
     try {
+      if(!Username || !Email || !Password){
+        throw new Error("Please fill all the fields");
+      }
       const hasdpswd = await hashPassword(Password);
-      console.log(hasdpswd);
+      console.log("pwsed hashed");
       const newUser = await User.create({
         Username,
         Email,
         Password: hasdpswd,
       });
-      console.log(hasdpswd);
       newUser.save();
       return newUser;
     } catch (error) {
@@ -24,6 +26,9 @@ class UserRepositry {
 
   async LoginUser({ Email, Password }) {
     try {
+      if(!Email || !Password){
+        throw new Error("Please fill all the fields");
+      }
       const existingUser = await User.findOne({ where: { Email } });
       if (!existingUser) {
         throw new Error("User not found");
@@ -36,9 +41,11 @@ class UserRepositry {
         throw new Error("Incorrect password");
       }
       const token = generateToken({
+        Username: existingUser.Username,
         UserID: existingUser.UserID,
         email: existingUser.Email,
         Role: "User",
+
       });
       console.log(token);
       return token;
@@ -50,6 +57,9 @@ class UserRepositry {
 
   async updateUser({ Username, Email, Password, UserID }) {
     try {
+      if(!Username || !Email || !Password){
+        throw new Error("Please fill all the fields");
+      }
       const hashedPassword = await hashPassword(Password);
       Password = hashedPassword;
       const updatedUser = await User.update(
@@ -72,6 +82,9 @@ class UserRepositry {
   }
 
   async deleteUser({ UserID }) {
+    if(!UserID){
+      throw new Error("Please fill all the fields");
+    }
     try {
       const deletedUser = await User.destroy({
         where: {
@@ -84,6 +97,8 @@ class UserRepositry {
       throw new Error("Error deleting user");
     }
   }
+
+  
 }
 
 const userRepository = new UserRepositry();
