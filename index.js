@@ -31,7 +31,7 @@ app.use("/api/v1", V1Router);
 cloudinaryConnect() 
 
 const PORT = process.env.PORT || 3000;
-app.get("/", isAdmin,(req, res) => {
+app.get("/",(req, res) => {
   return res.json({ message: "Welcome to our application" });
 });
 
