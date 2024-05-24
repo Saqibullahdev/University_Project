@@ -1,7 +1,10 @@
 
  {
         "host": "localhost",
-        "user": "root",
+        "user": "avnadmin",
         "password": "admin",
         "database": "newpro"
     }
+
+
+    
