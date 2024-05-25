@@ -11,17 +11,12 @@ const createUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
   try {
-    console.log("saqib1");
 
     const token = await userRepository.LoginUser(req.body);
-    console.log("saqib");
-    console.log(token);
-    res
-      .cookie("user_token", token, {
-      httpOnly: true,
-      secure: true,
-      // sameSite: "none"
-      })
+    if (!token) {
+      return res.status(400).json({ message: "Invalid credentials",succuss:false });
+    }
+    res.cookie("user_token", token)
       .status(200)
       .json({ message: "User logged in successfully",succuss:true });
   } catch (error) {
