@@ -32,7 +32,7 @@ cloudinaryConnect()
 
 const PORT = process.env.PORT || 3000;
 app.get("/",(req, res) => {
-  return res.json({ message: "Welcome to our application" });
+  return res.json({ message: "Welcome to our application updated" });
 });
 
 app.post("/upload", (req, res) => {
